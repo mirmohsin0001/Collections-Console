@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './App.css'
 
 function App() {
   const [collections, setCollections] = useState([]);
@@ -10,7 +11,7 @@ function App() {
   useEffect(() => {
     const fetchCollections = async () => {
       try {
-        const response = await fetch('https://collections-console.onrender.com/api/collections'); 
+        const response = await fetch('https://collections-console.onrender.com/api/collections');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -73,13 +74,18 @@ function App() {
       {selectedCollection && (
         <div>
           <h2>Data from {selectedCollection}</h2>
-          <ul>
+          <ol>
             {collectionData.map((item) => (
-              <li key={item._id}> 
-                {/* Display the data from the selected collection here */}
+              <li key={item._id}>
+                {Object.entries(item).map(([key, value]) => (
+                  <div key={key}>
+                    <strong>{key}:</strong> {JSON.stringify(value)} {/* Stringify for complex values */}
+                  </div>
+                ))}
+                <br />
               </li>
             ))}
-          </ul>
+          </ol>
         </div>
       )}
     </div>
