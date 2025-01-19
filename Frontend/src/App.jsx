@@ -31,7 +31,7 @@ function App() {
     if (selectedCollection) {
       const fetchData = async () => {
         try {
-          const response = await fetch(`https://your-backend-url/api/data/${selectedCollection}`);
+          const response = await fetch(`https://collections-console.onrender.com/api/data/${selectedCollection}`);
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
