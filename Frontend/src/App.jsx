@@ -63,13 +63,13 @@ function App() {
   return (
     <div>
       <h1>Collections</h1>
-      <ul>
+      <div>
         {collections.map((collection) => (
-          <li key={collection} onClick={() => handleCollectionSelect(collection)}>
+          <button key={collection} onClick={() => handleCollectionSelect(collection)}>
             {collection}
-          </li>
+          </button>
         ))}
-      </ul>
+      </div>
 
       {selectedCollection && (
         <div>
