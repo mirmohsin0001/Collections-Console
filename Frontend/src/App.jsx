@@ -10,7 +10,7 @@ function App() {
   useEffect(() => {
     const fetchCollections = async () => {
       try {
-        const response = await fetch('https://your-backend-url/api/collections'); 
+        const response = await fetch('https://collections-console.onrender.com/api/collections'); 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
