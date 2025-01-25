@@ -39,8 +39,11 @@ function App() {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
+
           const data = await response.json();
-          setCollectionData(data);
+          const sortedData = data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+          setCollectionData(sortedData);
+
         } catch (err) {
           console.error('Fetch data error:', err);
           setError('Error fetching data from collection.');
