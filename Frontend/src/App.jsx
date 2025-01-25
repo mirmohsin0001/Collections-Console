@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css'
+import downArrow from './assets/downArrow.png'
+import upArrow from './assets/upArrow.png'
+
 
 function App() {
   const [collections, setCollections] = useState([]);
@@ -60,8 +63,24 @@ function App() {
     return <div>Error: {error}</div>;
   }
 
+  const scrollToBottom = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth'
+    });
+  }
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
   return (
     <div>
+      <img width={32} onClick={scrollToBottom} className='scrollDownBtn' src={downArrow} alt="img" />
+      <img width={32} onClick={scrollToTop} className='scrollUpBtn' src={upArrow} alt="img" />
       <h1>Collections</h1>
       <div>
         {collections.map((collection) => (
